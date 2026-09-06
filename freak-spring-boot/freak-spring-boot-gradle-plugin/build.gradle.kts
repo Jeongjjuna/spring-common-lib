@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    id("java-gradle-plugin")
 }
 
 group = "yjh.ontongsal"
@@ -9,12 +9,11 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:6.0.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-tasks.test {
-    useJUnitPlatform()
+gradlePlugin {
+    plugins {
+        create("freakSpringBoot") {
+            id = "yjh.ontongsal.spring-boot"
+            implementationClass = "yjh.ontongsal.gradle.FreakSpringBootPlugin"
+        }
+    }
 }
