@@ -17,6 +17,7 @@ dependencies {
     // https://docs.gradle.org/current/userguide/platforms.html?utm_source=chatgpt.com
     implementation(platform("org.springframework.boot:spring-boot-dependencies:4.1.1"))
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
 }
 
 // (임시) 로컬 배포를 위함
