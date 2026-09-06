@@ -1,29 +1,25 @@
 plugins {
-    java
-    id("org.springframework.boot") version "4.1.1"
-    id("io.spring.dependency-management") version "1.1.7"
+    id("yjh.ontongsal.spring-boot") version "1.0.0"
 }
 
 group = "yjh.ontongsal"
 version = "0.0.1-SNAPSHOT"
 description = "spring-api"
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
-    }
-}
-
 repositories {
+    mavenLocal() //(임시) 로컬 starter repository 다운로드를 위한 추가
     mavenCentral()
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
+    // 이미 공통 플러그인에서 관리해주는 의존성 추가
+    implementation("org.springframework.boot:spring-boot-starter-webmvc")
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+    // 이 프로젝트에서만 독립적으로 추가할때
+    // redis
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
+//    implementation("org.springframework.boot:spring-boot-starter")
+//    testImplementation("org.springframework.boot:spring-boot-starter-test")
+//    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
