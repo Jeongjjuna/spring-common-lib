@@ -23,7 +23,7 @@ public class FreakSpringBootPlugin implements Plugin<Project> {
         // Freak SpringBoot Starter
         project.getDependencies().add(
                 "implementation",
-                "yjh.ontongsal:freak-spring-boot-starter:1.0-SNAPSHOT"
+                "yjh.ontongsal:freak-spring-boot-starter:1.0.0"
         );
 
         // Test

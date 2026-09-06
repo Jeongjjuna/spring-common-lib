@@ -1,9 +1,12 @@
 plugins {
     id("java-gradle-plugin")
+
+    // 배포 방법 : ./gradlew :freak-spring-boot-gradle-plugin:publishToMavenLocal
+    id("maven-publish") // (임시) 로컬 배포를 위한 플러그인
 }
 
 group = "yjh.ontongsal"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -19,6 +22,15 @@ gradlePlugin {
         create("freakSpringBoot") {
             id = "yjh.ontongsal.spring-boot"
             implementationClass = "yjh.ontongsal.gradle.FreakSpringBootPlugin"
+        }
+    }
+}
+
+// (임시) 로컬 배포를 위함
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"]) // ~/.m2/repository
         }
     }
 }
