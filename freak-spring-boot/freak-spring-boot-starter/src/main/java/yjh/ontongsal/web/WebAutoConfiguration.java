@@ -5,11 +5,23 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
+import yjh.ontongsal.web.exception.GlobalExceptionHandler;
 import yjh.ontongsal.web.filter.LoggingFilter;
 import yjh.ontongsal.web.filter.MdcFilter;
 
 @AutoConfiguration
 public class WebAutoConfiguration {
+
+    @Bean
+    @ConditionalOnProperty(
+            prefix = "freak.lib.web.exception.handler",
+            name = "enabled",
+            havingValue = "true",
+            matchIfMissing = true
+    )
+    public GlobalExceptionHandler globalExceptionHandler() {
+        return new GlobalExceptionHandler();
+    }
 
     @Bean
     @ConditionalOnProperty(

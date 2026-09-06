@@ -1,3 +1,18 @@
 spring:
   application:
     name: spring-api
+  jackson:
+    mapper:
+      sort-properties-alphabetically: false
+
+freak:
+  lib:
+    web:
+      exception:
+        handler:
+          enabled: true
+      filter:
+        mdc:
+          enabled: true
+        logging:
+          enabled: true
