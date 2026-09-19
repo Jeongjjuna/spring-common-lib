@@ -7,4 +7,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "spring-api"
+rootProject.name = "freak-spring-boot-example"

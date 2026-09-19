@@ -2,6 +2,7 @@ package yjh.ontongsal.common.domain.exception;
 
 public enum CommonResultCode implements ResultCode {
 
+    UNAUTHORIZED(99996, "Authentication required"),
     INVALID_REQUEST(99997, "Invalid parameter"),
     NETWORK_ERROR(99998, "Internal network error"),
     INTERNAL_SERVER_ERROR(99999, "Internal server error");

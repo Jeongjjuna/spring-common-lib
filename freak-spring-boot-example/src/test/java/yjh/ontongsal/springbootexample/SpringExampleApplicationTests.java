@@ -1,10 +1,10 @@
-package yjh.ontongsal.springapi;
+package yjh.ontongsal.springbootexample;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringApiApplicationTests {
+class SpringExampleApplicationTests {
 
     @Test
     void contextLoads() {

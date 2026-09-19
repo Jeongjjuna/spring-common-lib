@@ -11,7 +11,8 @@ repositories {
 }
 
 dependencies {
-    api("org.jspecify:jspecify:1.0.0")
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:4.1.1"))
+    api("org.jspecify:jspecify")
 
     testImplementation(platform("org.junit:junit-bom:6.0.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

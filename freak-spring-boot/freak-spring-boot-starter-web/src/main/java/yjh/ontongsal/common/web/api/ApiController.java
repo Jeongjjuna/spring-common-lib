@@ -7,6 +7,6 @@ public interface ApiController {
     }
 
     default <T> ApiResponse<T> success() {
-        return success();
+        return success(null);
     }
 }

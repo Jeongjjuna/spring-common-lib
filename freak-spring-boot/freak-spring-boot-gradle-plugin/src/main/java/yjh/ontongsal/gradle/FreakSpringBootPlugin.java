@@ -12,7 +12,7 @@ import org.springframework.boot.gradle.plugin.SpringBootPlugin;
 
 public class FreakSpringBootPlugin implements Plugin<Project> {
 
-    private static final String EXTENSION_NAME = "freak";
+    private static final String EXTENSION_NAME = "freakDependencies";
 
     @Override
     public void apply(@NonNull Project project) {

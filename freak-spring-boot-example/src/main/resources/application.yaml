@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: spring-api
+  jackson:
+    mapper:
+      sort-properties-alphabetically: false
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+freak:
+  common:
+    web:
+      enabled: true
+
+logging:
+  level:
+    root: INFO
