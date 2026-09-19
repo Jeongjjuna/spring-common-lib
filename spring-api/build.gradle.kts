@@ -11,10 +11,6 @@ repositories {
     mavenCentral()
 }
 
-freak {
-    web = true
-    redis = false
-}
 
 dependencies {
     // implementation("org.springframework.boot:spring-boot-starter-webmvc") // freak.web = true

@@ -13,6 +13,9 @@ repositories {
 }
 
 dependencies {
+    /**
+     * lib 를 사용하는 spring-boot 버전 강제(4.1.1)
+     */
     implementation("org.springframework.boot:spring-boot-gradle-plugin:4.1.1")
     implementation("io.spring.gradle:dependency-management-plugin:1.1.7")
 }
