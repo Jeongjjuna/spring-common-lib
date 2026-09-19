@@ -17,6 +17,8 @@ dependencies {
     // https://docs.gradle.org/current/userguide/platforms.html?utm_source=chatgpt.com
     implementation(platform("org.springframework.boot:spring-boot-dependencies:4.1.1"))
 
+    api(project(":freak-spring-boot-starter-domain"))
+
     api("org.springframework.boot:spring-boot-starter-web")
     api("org.springframework.boot:spring-boot-starter-validation")
     api("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.0")

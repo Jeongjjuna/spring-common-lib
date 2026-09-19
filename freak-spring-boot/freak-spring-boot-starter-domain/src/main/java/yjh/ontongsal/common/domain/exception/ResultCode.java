@@ -1,4 +1,4 @@
-package yjh.ontongsal.web.exception;
+package yjh.ontongsal.common.domain.exception;
 
 public interface ResultCode {
     int getCode();

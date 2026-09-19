@@ -13,6 +13,8 @@ repositories {
 dependencies {
     implementation(platform("org.springframework.boot:spring-boot-dependencies:4.1.1"))
 
+    api(project(":freak-spring-boot-starter-domain"))
+
     api("org.springframework.boot:spring-boot-autoconfigure")
     api("org.springframework:spring-web")
 
