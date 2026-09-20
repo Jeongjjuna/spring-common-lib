@@ -1,5 +1,6 @@
 package yjh.ontongsal.common.web.api;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.slf4j.MDC;
 import yjh.ontongsal.common.domain.exception.ResultCode;
 import yjh.ontongsal.common.web.filter.MdcFilter;
@@ -10,10 +11,10 @@ import yjh.ontongsal.common.web.filter.MdcFilter;
  * ApiResponse<Void>
  */
 public record ApiResponse<T>(
-        int result_code,
-        String result_message,
-        T data,
-        String trace_id
+        @Schema(example = "1") int result_code,
+        @Schema(example = "SUCCESS") String result_message,
+        @Schema(nullable = true, example = "null") T data,
+        @Schema(example = "550e8400-e29b-41d4-a716-446655440000") String trace_id
 ) {
     public static <T> ApiResponse<T> success(T data) {
         return new ApiResponse<>(1, "SUCCESS", data, MDC.get(MdcFilter.TRACE_ID));

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-api
+    name: spring-example-api
   jackson:
     mapper:
       sort-properties-alphabetically: false
@@ -10,11 +10,28 @@ spring:
     password:
     driver-class-name: org.h2.Driver
 
+
 freak:
   common:
     web:
       enabled: true
+      swagger:
+        result-code-scan:
+          enabled: true
+        description: |
+          ### 커스텀한 설명을 적을 수 있습니다.
+          스스텀 설명 ...
+          
+          | 코드 | 메세지 |
+          | ----| -----|
+          | 50100 | Not Fount | 
 
 logging:
   level:
     root: INFO
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true

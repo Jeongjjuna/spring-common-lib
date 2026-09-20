@@ -1,5 +1,6 @@
 package yjh.ontongsal.springbootexample.web;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import yjh.ontongsal.common.domain.exception.AuthenticationException;
@@ -11,8 +12,9 @@ import yjh.ontongsal.common.web.filter.Masked;
 
 import java.time.LocalDateTime;
 
-@RestController
+@Tag(name = "[응답 포맷 예외처리 API]", description = "응답 포맷과 예외처리 테스트를 위한 API")
 @RequestMapping("/web")
+@RestController
 public class WebController implements ApiController {
 
     @GetMapping("/success")
