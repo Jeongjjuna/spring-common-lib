@@ -8,9 +8,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import tools.jackson.databind.json.JsonMapper;
 import yjh.ontongsal.common.web.exception.GlobalExceptionHandler;
-import yjh.ontongsal.common.web.filter.FreakFilterOrder;
-import yjh.ontongsal.common.web.filter.LoggingFilter;
-import yjh.ontongsal.common.web.filter.MdcFilter;
+import yjh.ontongsal.common.web.filter.*;
 
 @AutoConfiguration
 @EnableConfigurationProperties(WebProperties.class)
@@ -32,6 +30,18 @@ public class WebAutoConfiguration {
     @ConditionalOnMissingBean(name = "globalExceptionHandler")
     public GlobalExceptionHandler globalExceptionHandler() {
         return new GlobalExceptionHandler();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(name = "loggingRequestBodyAdvice")
+    public LoggingRequestBodyAdvice loggingRequestBodyAdvice() {
+        return new LoggingRequestBodyAdvice();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(name = "loggingResponseBodyAdvice")
+    public LoggingResponseBodyAdvice loggingResponseBodyAdvice() {
+        return new LoggingResponseBodyAdvice();
     }
 
     @Bean
