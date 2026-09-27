@@ -43,7 +43,6 @@ public class GlobalExceptionHandler {
             }
             default -> log.error("[NetworkException] client={}, type={}", e.getClientName(), e.getErrorType());
         }
-        log.error("[{}] {}", e.getClass().getSimpleName(), e.getMessage(), e);
         return ResponseEntity.ok(ApiResponse.error(e.getResultCode()));
     }
 

@@ -24,7 +24,23 @@ freak:
           
           | 코드 | 메세지 |
           | ----| -----|
-          | 50100 | Not Fount | 
+          | 50100 | Not Fount |
+    http:
+      clients:
+        auth-api:
+          base-url: http://localhost:8080
+          connect-timeout: 3s
+          read-timeout: 1s
+          pool-size: 5
+          connection-ttl: 50
+          connection-request-timeout: 5s
+        reward-api:
+          base-url: http://localhost:8080
+          connect-timeout: 3s
+          read-timeout: 10s
+          pool-size: 5
+          connection-ttl: 50
+          connection-request-timeout: 5s
 
 logging:
   level:

@@ -6,6 +6,10 @@ public sealed class NetworkException extends SystemException
     private final String clientName;
     private final HttpClientErrorType errorType;
 
+    public static Http ofHttpError(String clientName, HttpClientErrorType errorType, int statusCode, String responseBody) {
+        return new Http(clientName, errorType, statusCode, responseBody);
+    }
+
     public String getClientName() {
         return clientName;
     }
@@ -20,7 +24,7 @@ public sealed class NetworkException extends SystemException
             String message,
             Throwable cause
     ) {
-        super(CommonResultCode.NETWORK_ERROR);
+        super(CommonResultCode.NETWORK_ERROR, cause);
         this.clientName = clientName;
         this.errorType = errorType;
     }
@@ -63,7 +67,7 @@ public sealed class NetworkException extends SystemException
 
     public static final class Io extends NetworkException {
         private Io(String clientName, HttpClientErrorType errorType, Throwable cause) {
-            super(clientName, errorType, "[%s] %s".formatted(clientName, errorType), null);
+            super(clientName, errorType, "[%s] %s".formatted(clientName, errorType), cause);
         }
 
         public boolean isConnectTimeout() {
@@ -77,5 +81,13 @@ public sealed class NetworkException extends SystemException
         public boolean isPoolTimeOut() {
             return getErrorType() == HttpClientErrorType.POOL_TIMEOUT;
         }
+    }
+
+    public static Io ofIoError(
+            String clientName,
+            HttpClientErrorType errorType,
+            Throwable cause
+    ) {
+        return new Io(clientName, errorType, cause);
     }
 }
