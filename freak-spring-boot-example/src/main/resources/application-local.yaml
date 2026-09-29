@@ -5,11 +5,51 @@ spring:
     mapper:
       sort-properties-alphabetically: false
   datasource:
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-
+    user-db:
+      write:
+        jdbc-url: jdbc:h2:mem:testdb
+        username: sa
+        password:
+        maximum-pool-size: 30
+        connection-timeout: 30000
+        keepalive-time: 0
+      read:
+        jdbc-url: jdbc:h2:mem:testdb
+        username: sa
+        password:
+        maximum-pool-size: 30
+        connection-timeout: 30000
+        keepalive-time: 0
+    root-db:
+      write:
+        jdbc-url: jdbc:h2:mem:testdb
+        username: sa
+        password:
+        maximum-pool-size: 30
+        connection-timeout: 30000
+        keepalive-time: 0
+      read:
+        jdbc-url: jdbc:h2:mem:testdb
+        username: sa
+        password:
+        maximum-pool-size: 30
+        connection-timeout: 30000
+        keepalive-time: 0
+  # JPA 공통설정
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl.auto: create-drop
+        show_sql: false
+        format_sql: false
+        jdbc.batch_size: 50
+        order_inserts: true
+        order_updates: true
+  # 로컬 개발용
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 
 freak:
   common:
