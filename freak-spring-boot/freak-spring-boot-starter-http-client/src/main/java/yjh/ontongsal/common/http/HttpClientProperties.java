@@ -23,19 +23,15 @@ public record HttpClientProperties(
             @DefaultValue("50") int poolSize,
             @DefaultValue("25s") Duration connectionTtl,
             @DefaultValue("5s") Duration connectionRequestTimeout,
-            @Nullable RetryConfig retry,
-            @Nullable Duration circuitBreaker
+            @Nullable RetryConfig retry
     ) {
     }
 
     public record RetryConfig(
             @DefaultValue("false") boolean enabled,
-            @DefaultValue("3") int maxAttempts
-    ) {
-    }
-
-    public record CircuitBreakerConfig(
-            @DefaultValue("false") boolean enabled
+            @DefaultValue("3") int maxAttempts,
+            @DefaultValue("500ms") Duration waitDuration,
+            @DefaultValue("false") boolean retryOnPost
     ) {
     }
 }

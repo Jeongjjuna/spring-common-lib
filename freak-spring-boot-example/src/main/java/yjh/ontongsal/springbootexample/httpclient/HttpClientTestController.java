@@ -46,8 +46,8 @@ public class HttpClientTestController implements ApiController {
             @RequestHeader("Authorization") String authorization
     ) throws InterruptedException {
         log.info("[Controller users]");
-        Thread.sleep(5000);
-        log.info("[Controller uesrs end");
+        Thread.sleep(10000);
+        log.info("[Controller uesrs end]");
         return Map.of(
                 "userId", 1L,
                 "username", "test-user",

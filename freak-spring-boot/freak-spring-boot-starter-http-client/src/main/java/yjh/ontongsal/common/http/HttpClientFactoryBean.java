@@ -22,6 +22,7 @@ import yjh.ontongsal.common.domain.exception.NetworkException;
 import yjh.ontongsal.common.http.interceptor.ExceptionMappingInterceptor;
 import yjh.ontongsal.common.http.interceptor.LoggingClientInterceptor;
 import yjh.ontongsal.common.http.interceptor.MdcPropagationInterceptor;
+import yjh.ontongsal.common.http.proxy.HttpClientResilienceProxy;
 
 import java.nio.charset.StandardCharsets;
 
@@ -68,12 +69,16 @@ public class HttpClientFactoryBean<T> implements FactoryBean<T>, ApplicationCont
                 )
                 .build();
 
-        var client = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient))
+        var client = HttpServiceProxyFactory
+                .builderFor(RestClientAdapter.create(restClient))
                 .build()
                 .createClient(clientType);
+
         log.info("[HttpClient] '{}' RestClient 생성 완료 - baseUrl={}, connectTimeout={}, readTimeout={}, poolSize={}, connectionTtl={}, connectionRequestTimeout={}",
                 clientName, config.baseUrl(), config.connectTimeout(), config.readTimeout(), config.poolSize(), config.connectionTtl(), config.connectionRequestTimeout());
-        return client;
+
+        // proxy 로 한번 감싸주기
+        return new HttpClientResilienceProxy<>(client, clientType, clientName, config).create();
     }
 
     public HttpComponentsClientHttpRequestFactory buildRequestFactory(HttpClientProperties.ClientConfig config) {

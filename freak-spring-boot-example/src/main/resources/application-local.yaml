@@ -74,6 +74,11 @@ freak:
           pool-size: 5
           connection-ttl: 50
           connection-request-timeout: 5s
+          retry:
+            enabled: true
+            max-attempts: 4
+            wait-duration: 500ms
+            retry-on-post: false
         reward-api:
           base-url: http://localhost:8080
           connect-timeout: 3s

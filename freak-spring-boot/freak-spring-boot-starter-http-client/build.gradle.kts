@@ -21,6 +21,13 @@ dependencies {
     implementation("org.slf4j:slf4j-api")
     implementation("org.apache.httpcomponents.client5:httpclient5")
 
+    implementation(platform("io.github.resilience4j:resilience4j-bom:2.3.0"))
+
+    implementation("io.github.resilience4j:resilience4j-retry")
+//    implementation("io.github.resilience4j:resilience4j-circuitbreaker")
+//    implementation("io.github.resilience4j:resilience4j-bulkhead")
+//    implementation("io.github.resilience4j:resilience4j-ratelimiter")
+
     annotationProcessor(platform("org.springframework.boot:spring-boot-dependencies:4.1.1"))
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
