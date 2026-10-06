@@ -7,14 +7,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.jspecify.annotations.NonNull;
 import org.slf4j.MDC;
 import org.springframework.web.filter.OncePerRequestFilter;
-import yjh.ontongsal.common.domain.header.FreakHeader;
+import yjh.ontongsal.common.domain.tracing.FreakTracing;
 
 import java.io.IOException;
 import java.util.UUID;
 
 public class MdcFilter extends OncePerRequestFilter {
-
-    public static final String TRACE_ID = "traceId";
 
     @Override
     protected void doFilterInternal(
@@ -23,16 +21,16 @@ public class MdcFilter extends OncePerRequestFilter {
             @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
         try {
-            String traceId = request.getHeader(FreakHeader.TRACE_ID_HEADER);
+            String traceId = request.getHeader(FreakTracing.TRACE_ID_HEADER);
 
             if (traceId == null || traceId.isBlank()) {
                 traceId = UUID.randomUUID().toString();
             }
 
-            MDC.put(TRACE_ID, traceId);
+            MDC.put(FreakTracing.TRACE_ID_MDC_KEY, traceId);
             filterChain.doFilter(request, response);
         } finally {
-            MDC.remove(TRACE_ID);
+            MDC.remove(FreakTracing.TRACE_ID_MDC_KEY);
         }
     }
 }
