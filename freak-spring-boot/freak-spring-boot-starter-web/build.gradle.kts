@@ -19,7 +19,7 @@ dependencies {
 
     api(project(":freak-spring-boot-starter-domain"))
 
-    api("org.springframework.boot:spring-boot-starter-web")
+    api("org.springframework.boot:spring-boot-starter-webmvc")
     api("org.springframework.boot:spring-boot-starter-validation")
     api("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.0")
 
