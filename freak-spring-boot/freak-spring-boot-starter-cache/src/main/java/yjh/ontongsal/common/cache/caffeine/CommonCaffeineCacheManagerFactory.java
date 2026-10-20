@@ -1,4 +1,4 @@
-package yjh.ontongsal.common.cache.local;
+package yjh.ontongsal.common.cache.caffeine;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.caffeine.CaffeineCache;
@@ -7,9 +7,9 @@ import yjh.ontongsal.common.cache.CacheDefinition;
 
 import java.util.Arrays;
 
-public class CommonLocalCacheManagerFactory {
+public class CommonCaffeineCacheManagerFactory {
 
-    private CommonLocalCacheManagerFactory() {
+    private CommonCaffeineCacheManagerFactory() {
     }
 
     public static <E extends Enum<E> & CacheDefinition> SimpleCacheManager from(Class<E> definitionClass, long maximumSize) {
