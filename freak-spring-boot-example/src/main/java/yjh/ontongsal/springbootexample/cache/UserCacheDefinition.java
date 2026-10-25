@@ -5,7 +5,7 @@ import yjh.ontongsal.common.cache.CacheDefinition;
 import java.time.Duration;
 
 public enum UserCacheDefinition implements CacheDefinition {
-    USER_INFO("user:info", Duration.ofMinutes(5), UserInfo.class);
+    USER_INFO("USER_INFO", Duration.ofSeconds(5), UserInfo.class);
 
     private final String cacheName;
     private final Duration ttl;
