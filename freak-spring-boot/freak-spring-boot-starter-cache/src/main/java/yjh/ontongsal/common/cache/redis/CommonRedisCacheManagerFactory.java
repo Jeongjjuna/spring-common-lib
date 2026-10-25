@@ -35,6 +35,7 @@ public class CommonRedisCacheManagerFactory {
                                 .computePrefixWith(name -> namespace + ":" + name + ":")
                 ));
         return RedisCacheManager.RedisCacheManagerBuilder
+                // .fromCacheWriter(RedisCacheWriter.lockingRedisCacheWriter(connectionFactory)) // 캐시 이름 기준의 잠금 기능을 활성화 할 수 있다. 선언하지 않으면 DefaultCacheWriter 가 사용되고 이거는 잠김 기능이 비활성화로 되어있다.
                 .fromConnectionFactory(connectionFactory)
                 .withInitialCacheConfigurations(configs)
                 .build();
