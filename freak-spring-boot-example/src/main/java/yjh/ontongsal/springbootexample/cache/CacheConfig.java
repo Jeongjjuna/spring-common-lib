@@ -4,6 +4,7 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import yjh.ontongsal.common.cache.caffeine.CommonCaffeineCacheManagerFactory;
 import yjh.ontongsal.common.cache.redis.CommonRedisCacheManagerFactory;
@@ -12,13 +13,14 @@ import yjh.ontongsal.common.cache.redis.CommonRedisCacheManagerFactory;
 @Configuration
 public class CacheConfig {
 
+    @Primary
     @Bean("CaffeineCacheManager")
-    public CacheManager cacheManager() {
+    public CacheManager caffeineCacheManager() {
         return CommonCaffeineCacheManagerFactory.from(UserCacheDefinition.class, 1000L);
     }
 
     @Bean("RedisCacheManager")
-    public CacheManager cacheManager(
+    public CacheManager redisCacheManager(
             RedisConnectionFactory redisConnectionFactory
     ) {
         return CommonRedisCacheManagerFactory.from(
