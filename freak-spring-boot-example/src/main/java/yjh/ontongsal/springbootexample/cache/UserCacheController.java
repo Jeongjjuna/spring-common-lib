@@ -26,4 +26,9 @@ public class UserCacheController {
     public UserInfo getUserNonWithStampedProtector(@PathVariable Long userId) {
         return userCacheStampedProtectRepository.getUserInfoFromGlobalCache(userId);
     }
+
+    @GetMapping("/{userId}/with-cachestamped-util")
+    public UserInfo getUserNonWithStampedUtil(@PathVariable Long userId) {
+        return userCacheStampedProtectRepository.getUserInfoFromGlobalCache2(userId);
+    }
 }

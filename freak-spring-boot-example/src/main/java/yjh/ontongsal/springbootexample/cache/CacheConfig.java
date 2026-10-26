@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import yjh.ontongsal.common.cache.LocalLockCacheStampedeProtector;
 import yjh.ontongsal.common.cache.caffeine.CommonCaffeineCacheManagerFactory;
 import yjh.ontongsal.common.cache.redis.CommonRedisCacheManagerFactory;
 
@@ -27,5 +28,10 @@ public class CacheConfig {
                 redisConnectionFactory,
                 UserCacheDefinition.class,
                 "USER_API");
+    }
+
+    @Bean
+    public LocalLockCacheStampedeProtector localLockCacheStampedeProtector() {
+        return new LocalLockCacheStampedeProtector(256);
     }
 }
